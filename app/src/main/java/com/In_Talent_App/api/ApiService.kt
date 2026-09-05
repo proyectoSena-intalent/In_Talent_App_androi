@@ -6,6 +6,9 @@ import com.In_Talent_App.model.RegisterRequest // O como se llame tu data class 
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
+import com.In_Talent_App.model.ServiceResponse
+import retrofit2.http.GET
+import retrofit2.http.Header
 
 interface ApiService {
 
@@ -19,4 +22,8 @@ interface ApiService {
     suspend fun registrar(
         @Body request: RegisterRequest
     ): Response<AuthResponse> // O el modelo que retorne tu endpoint
+    @GET("api/servicios")
+    suspend fun getServices(
+        @Header("Authorization") token: String
+    ): Response<List<ServiceResponse>>
 }
